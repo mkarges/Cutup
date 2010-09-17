@@ -31,8 +31,7 @@ class Pro
 		File.open('temp.xml', 'w') do |erase|
 			erase.write ''
 		end
-		
-		[200, {"Content-Type" => "text/html"}, arr ]
-		
+		#run the app
+		[ 200, {"Content-Type" => "text/html"}, arr ]
 	end
 end

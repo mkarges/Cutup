@@ -1,0 +1,33 @@
+
+body	{
+font-family: courier;
+font-size: 1em;
+}
+
+#container	{
+position: absolute;
+top: 5%;
+left: 50%;
+width: 500px;
+margin-left: -250px;
+}
+
+#left	{
+position: absolute;
+top: 5%;
+left: 5%;
+
+}
+
+.quote	{
+font-size: 12px;
+font-family;
+text-align: justify;
+}
+
+
+
+a	{
+color: #000; 
+text-decoration: none; 
+}

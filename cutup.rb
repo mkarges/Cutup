@@ -36,12 +36,12 @@ I have succeeded to some modest extent.\"
 <input type=\"submit\" value=\"Commit to The Document\" />
 </container>
 </div>
-	<div id=\"left\">
-	<p>+ How This Works </p>
-	<p>+ <a href=\"http://homepages.spa.umn.edu/~duvernoi/cutup.html\">History of Cut Up</a> </p>
-	<p>+ <a href=\"/thedocument\">The Document</a> </p> 
-	<p>+ Links </p>
-	</div>
+<div id=\"left\">
+<p>+ <a href=\"../\">Home</a> </p>
+<p>+ How This Works </p>
+<p>+ <a href=\"http://homepages.spa.umn.edu/~duvernoi/cutup.html\">History of Cut Up</a> </p>
+<p>+ <a href=\"thedocument\">The Document</a> </p> 
+</div>
 </body>
 </html>"
 			else
@@ -52,17 +52,20 @@ are the prerecordings themselves. So with my cut ups I was attempting to tamper 
 I have succeeded to some modest extent.\"
 -<i>William S. Burroughs</i>
 <p><form name=\"input\" action=\"\" method=\"post\">
-<textarea name=\"cut\" cols=\"60\" rows=\"10\" /></textarea><br />
+<textarea name=\"cut\" cols=\"60\" rows=\"10\" onclick=\"document.input.cut.value='';\">
+Enter text to be cutup here</textarea>
+
+<br />
 <p>Cut This Up: </p>
 <input type=\"submit\" value=\"submit\" />
 </form></p>
 </div>
-	<div id=\"left\">
-	<p>+ How This Works </p>
-	<p>+ <a href=\"http://homepages.spa.umn.edu/~duvernoi/cutup.html\">History of Cut Up</a> </p>
-	<p>+ <a href=\"thedocument\">The Document</a> </p> 
-	<p>+ Links </p>
-	</div>
+<div id=\"left\">
+<p>+ <a href=\"../\">Home</a> </p>
+<p>+ How This Works </p>
+<p>+ <a href=\"http://homepages.spa.umn.edu/~duvernoi/cutup.html\">History of Cut Up</a> </p>
+<p>+ <a href=\"thedocument\">The Document</a> </p> 
+</div>
 </body>
 </html>"		      
 			end

@@ -25,9 +25,11 @@ font-family;
 text-align: justify;
 }
 
-
-
 a	{
 color: #000; 
 text-decoration: none; 
+}
+
+.center	{
+text-align: center;
 }

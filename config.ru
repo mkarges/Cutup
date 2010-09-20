@@ -13,11 +13,7 @@ builder = Rack::Builder.new do
 	use Rack::ShowExceptions
 	use Rack::Reloader
 	use Rack::Static, :urls => [ "/stylesheets" ] # did not specify root here, but probably should when site's live
-   # use Rack::Session::Cookie, :key => 'rack.session',
-   #                             :path => '/',
-   #                            :expire_after => 2592000,
-   #                            :secret => '...'
-	
+
 	#url mapping
 	map '/' do	
 		run cut

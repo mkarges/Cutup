@@ -71,7 +71,6 @@ class Pro
 		footer = 
 "</div></body>"
 		
-		
 		#run the app
 		[ 200, {"Content-Type" => "text/html"}, "#{header}<p class=\"center\"><b>#{title}</b></p> #{arr} #{footer}" ]
 	end

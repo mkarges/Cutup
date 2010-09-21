@@ -3,6 +3,11 @@ require 'thedocument'
 require 'process'
 require 'p_array'
 require 'rearr'
+require 'sequel'
+
+#connect to db
+DB = Sequel.connect('sqlite://development.db')
+#DB = Sequel.connect('postgres://user:password@host:port/database_name')
 
 cut = CutUp.new
 doc = Doc.new
@@ -31,4 +36,16 @@ end
 # rack this up
 run builder 
 
+
+#migrations
+#DB.create_table :temp do
+#  primary_key :id
+#  String :entry
+#end
+
+#DB.create_table :document do
+#  primary_key :id
+#  String :master
+#  String :title
+#end
 

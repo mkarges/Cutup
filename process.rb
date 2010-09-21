@@ -1,26 +1,20 @@
 class Pro
 	def call(env)
-		arr = Array.new
-		t_arr = Array.new
 		
-		#read from master doc file; assign to array
-		File.open('thedocument.xml', 'r') do |f|
-			while line = f.gets
-			#remove html tags from Title
-			line = line.gsub(/<\/?[^>]*>/, "")
-			arr += line.split(/ /)
-			end
-		end
-		
-		#read from temp file; assign to array
-		File.open('temp.xml', 'r') do |f2|
-			while t_line = f2.gets
-			t_arr << t_line
-			end
-		end
-		
+  	document = DB[:document]
+		doc = document.map(:master).last
+    #i.e. SELECT * FROM document ORDER BY id DESC LIMIT 1
+		#Will output a string, so need to convert to array
+
+		arr = doc.split(/ /)
+
+  	temp = DB[:temp]	
+  	t_arr = []	
+		t_arr = temp.map(:entry)
+    #This should be an array not a string so no reason to convert		
+
 		#test to see if temp file is empty; if not, add contents of temp file to master doc
-		unless t_arr.empty?
+		unless temp.empty?
 			arr += t_arr 	
 			
 			#send thedocument with new text to shuffle method
@@ -31,21 +25,18 @@ class Pro
 			
 			#create a title
 			t = []
-			t = entry.slice!(0)	
+			t = entry.slice(0)	
 			title = t.join(" ")
 			
 			#reassign arr variable to new shuffled text
 			arr = entry.join(" ")
+			
+			document.insert(:master => arr, :title => title)		
+			
+			temp.delete	
+				
+		end
 
-			File.open('thedocument.xml', 'w') do |c|
-				c.write "<p class=\"center\"><b>#{title}</b></p> #{arr.squeeze(" ")}"
-				end
-		end
-		
-		#clear out the temp file
-		File.open('temp.xml', 'w') do |erase|
-			erase.write ''
-		end
 		
 		#temp formatting
 		header = 

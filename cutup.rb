@@ -13,9 +13,12 @@ class CutUp
 
 			entry.shuffle!
 			
-			File.open('temp.xml', 'w+') do |t|
-				t.puts entry
-			 end
+			temp = DB[:temp]
+			temp.insert(:entry => entry.join(" "))
+			
+			#File.open('temp.xml', 'w+') do |t|
+			#	t.puts entry
+			#end
 													
 "<body>
 <div id=\"container\">		

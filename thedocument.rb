@@ -1,13 +1,9 @@
 class Doc
 	def call(env)
-		doc = []
-		File.open('thedocument.xml', 'r') do |f|
-			while line = f.gets
-			doc << line
-			doc.to_s
-			end
-		end
-		
+	  
+  	document = DB[:document]
+		doc = document.map(:master).last
+		title = document.map(:title).last
 			
 		#temp formatting
 		header = 
@@ -32,6 +28,6 @@ class Doc
 "</div></body>"
 		
 		#run the app
-		[ 200, {"Content-Type" => "text/html"}, "#{header} #{doc} #{footer}" ]
+    [ 200, {"Content-Type" => "text/html"}, "#{header}<p class=\"center\"><b>#{title}</b></p> #{doc} #{footer}" ]
 	end
 end

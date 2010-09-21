@@ -6,8 +6,10 @@ require 'rearr'
 require 'sequel'
 
 #connect to db
-DB = Sequel.connect('sqlite://development.db')
-#DB = Sequel.connect('postgres://user:password@host:port/database_name')
+DB = 
+Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://development.db')
+#Sequel.connect('sqlite://development.db')
+
 
 cut = CutUp.new
 doc = Doc.new
@@ -43,7 +45,7 @@ run builder
 #  String :entry
 #end
 
-#DB.create_table :document do
+#DB.create_table :document dos
 #  primary_key :id
 #  String :master
 #  String :title

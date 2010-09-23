@@ -14,6 +14,10 @@ class CutUp
 			entry.shuffle!
 			
 			temp = DB[:temp]
+			
+			#need to make sure to empty temp in case of resubmit
+			temp.delete
+			
 			temp.insert(:entry => entry.join(" "))
 			
 			#File.open('temp.xml', 'w+') do |t|

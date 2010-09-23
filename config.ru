@@ -10,6 +10,14 @@ DB =
 Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://development.db')
 #Sequel.connect('sqlite://development.db')
 
+DB.alter_table(:temp) do
+  set_column_type :entry, String, :text => true
+end
+
+DB.alter_table(:document) do
+  set_column_type :master, String, :text => true
+end
+
 
 cut = CutUp.new
 doc = Doc.new
@@ -45,9 +53,10 @@ run builder
 #  String :entry
 #end
 
-#DB.create_table :document dos
+#DB.create_table :document do
 #  primary_key :id
 #  String :master
 #  String :title
 #end
+
 

@@ -1,20 +1,19 @@
 class Pro
 	def call(env)
-		
-  	document = DB[:document]
-		doc = document.map(:master).last
-    #i.e. SELECT * FROM document ORDER BY id DESC LIMIT 1
-		#Will output a string, so need to convert to array
+		temp = DB[:temp]	
+	    unless temp.empty?
+			document = DB[:document]
+			doc = document.map(:master).last
+			#i.e. SELECT * FROM document ORDER BY id DESC LIMIT 1
+			#Will output a string, so need to convert to array
+	
+			arr = doc.split(/ /)
 
-		arr = doc.split(/ /)
-
-  	temp = DB[:temp]	
-  	t_arr = []	
-		t_arr = temp.map(:entry)
-    #This should be an array not a string so no reason to convert		
+			t_arr = []	
+			t_arr = temp.map(:entry)
+		#This should be an array not a string so no reason to convert		
 
 		#test to see if temp file is empty; if not, add contents of temp file to master doc
-		unless temp.empty?
 			arr += t_arr 	
 			
 			#send thedocument with new text to shuffle method
@@ -33,13 +32,11 @@ class Pro
 			
 			document.insert(:master => arr, :title => title)		
 			
-			temp.delete	
-				
-		end
-
-		
-		#temp formatting
-		header = 
+			#empty out temp file
+			temp.delete						
+			
+			#temp formatting
+			header = 
 "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\">
 <head>
@@ -59,10 +56,15 @@ class Pro
 </div>
 <div id=\"container\">"
 		
-		footer = 
+			footer = 
 "</div></body>"
 		
-		#run the app
-		[ 200, {"Content-Type" => "text/html"}, "#{header}<p class=\"center\"><b>#{title}</b></p> #{arr} #{footer}" ]
+			#run the app
+			[ 200, {"Content-Type" => "text/html"}, "#{header}<p class=\"center\"><b>#{title}</b></p> #{arr} #{footer}" ]
+		else
+			#if not submitted thru form, redirect to the document
+			[ 302, {'Content-Type' => 'text/html', 'Location' => '/thedocument'}, [] ]
+		end
+	
 	end
 end

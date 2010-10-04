@@ -5,6 +5,7 @@ require 'p_array'
 require 'rearr'
 require 'sequel'
 
+
 #connect to db
 DB = 
 Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://development.db')

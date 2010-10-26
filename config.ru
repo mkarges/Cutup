@@ -1,25 +1,23 @@
-require 'cutup'  # original application
-require 'thedocument'
 require 'process'
-require 'p_array'
-require 'rearr'
+require 'template'
 require 'sequel'
-
 
 #connect to db
 DB = 
 Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://development.db')
 #Sequel.connect('sqlite://development.db')
 
-cut = CutUp.new
+cut = Cut.new
 doc = Doc.new
 pro = Pro.new
+how = How.new
+his = His.new
 
 builder = Rack::Builder.new do
 	#middleware	
 	use Rack::ShowExceptions
 	use Rack::Reloader
-	use Rack::Static, :urls => [ "/stylesheets" ] # did not specify root here, but probably should when site's live
+	use Rack::Static, :urls => [ "/stylesheets", "/images" ] # did not specify root here, but probably should when site's live
 
 	#url mapping
 	map '/' do	
@@ -33,6 +31,15 @@ builder = Rack::Builder.new do
 	map '/process' do
 		run pro	
 	end
+	
+	map '/how' do
+	  run how
+  end
+  
+  map '/history_of_cutup' do
+    run his
+  end
+  
 end
 
 # rack this up

@@ -1,0 +1,9 @@
+<p>There are two ways you can interact with this site. The first
+is by typing or pasting something into the text field and submitting
+it. The cut-up engine will output a random re-arrangement of the same words.
+This is a digital imitation of the Cut-up Method.</p>
+
+<p>Secondly, you can choose to submit your cut-up text to <a href="/thedocument">The Document</a>. 
+The Document is a constantly evolving repository of text that is re-arranged 
+each time any new input is added to it. A new "title" is dynamically generated
+each time, as are line breaks. Everything is a random as possible.</p>

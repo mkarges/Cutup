@@ -53,7 +53,7 @@ class Pro
 			
 			#add a line break (via paragraph tags) to thedocument if more than 150 chars submitted.
 			if temp.to_s.length > 150
-	      arr << ['</p><p>']
+	      	arr << ['</p><p>']
       end
 
 			t_arr = []	
@@ -116,7 +116,7 @@ end
 class How
     def call(env)
       text = ""
-      File.open("how.txt", "r") do |r|
+      File.open("docs/how.txt", "r") do |r|
         while (line = r.gets) 
           text << line
         end
@@ -133,7 +133,7 @@ end
 class His
     def call(env)
       text = ""
-      File.open("history_of_cutup.txt", "r") do |r|
+      File.open("docs/history_of_cutup.txt", "r") do |r|
         while (line = r.gets) 
           if line.strip.empty?
             line = '</p><p>'

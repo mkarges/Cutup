@@ -1,6 +1,6 @@
-require 'process'
-require 'template'
 require 'sequel'
+require './proc'
+require './template'
 
 #connect to db
 DB = 
